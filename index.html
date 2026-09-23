@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#2b1258">
+<title>Mulheres que Movem o Futuro</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Caveat:wght@600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+
+<script>
+const CONFIG = {
+  linkQuiz: "https://seu-link-do-quiz-aqui.com",
+  fotos: {
+    banner:      { src: "capa.png",                    alt: "Mulher olhando para o lado" },
+    sticker:     { src: "fotos/sticker.png",           alt: "Selo ou figura do projeto (PNG transparente)" },
+    hero:        { src: "fotos/hero.jpg",              alt: "Descreva a foto da capa" },
+    contexto:    { src: "fotos/contexto.jpg",          alt: "Descreva a foto desta seção" },
+    acao1:       { src: "fotos/acao-mentoria.jpg",     alt: "Mentoria nas escolas" },
+    acao2:       { src: "fotos/acao-preconceito.jpg",  alt: "Combate ao preconceito de gênero" },
+    acao3:       { src: "fotos/acao-mercado.jpg",      alt: "Equidade no mercado de trabalho" },
+    ada:         { src: "fotos/ada-lovelace.jpg",      alt: "Retrato de Ada Lovelace" },
+    hedy:        { src: "fotos/hedy-lamarr.jpg",       alt: "Retrato de Hedy Lamarr" },
+    enedina:     { src: "fotos/enedina-alves.jpg",     alt: "Retrato de Enedina Alves Marques" },
+    galeria1:    { src: "fotos/galeria-1.jpg",         alt: "Foto da galeria do projeto" },
+    galeria2:    { src: "fotos/galeria-2.jpg",         alt: "Foto da galeria do projeto" },
+    galeria3:    { src: "fotos/galeria-3.jpg",         alt: "Foto da galeria do projeto" },
+    galeria4:    { src: "fotos/galeria-4.jpg",         alt: "Foto da galeria do projeto" },
+    galeria5:    { src: "fotos/galeria-5.jpg",         alt: "Foto da galeria do projeto" }
+  }
+};
+</script>
+
+<style>
+:root{
+  --ink:#1d0f38;
+  --violet-deep:#2b1258;
+  --violet:#6b21a8;
+  --pink:#f72585;
+  --pink-dark:#b80c61;
+  --paper:#ffffff;
+  --lav:#f5f0fb;
+  --lav-2:#ebe2f7;
+  --line:#d8cbee;
+  --muted:#5f5878;
+  --tape:#fff1b8;
+  --header-h:56px;
+
+  --display:'Bricolage Grotesque','Segoe UI',system-ui,sans-serif;
+  --body:'Source Serif 4',Georgia,'Times New Roman',serif;
+  --hand:'Caveat',cursive;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--header-h) + 12px);-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+body{font-family:var(--body);font-size:1.0625rem;line-height:1.65;color:var(--ink);background:var(--ink)}
+h1,h2,h3,h4{font-family:var(--display);line-height:1.1;letter-spacing:-.015em}
+a{color:inherit}
+button,input,textarea,summary{touch-action:manipulation}
+:focus-visible{outline:3px solid var(--pink);outline-offset:3px}
+
+.page{max-width:640px;margin:0 auto;background:var(--paper);min-height:100vh;position:relative}
+.container{padding:0 1.25rem}
+.block{padding:3rem 0;overflow-x:clip}
+.block.alt{background:var(--lav)}
+
+.section-head{margin-bottom:1.75rem}
+.section-head h2{font-size:clamp(1.9rem,8.5vw,2.6rem);font-weight:800;margin-bottom:.4rem}
+.section-head .underline{display:block;width:min(220px,60%);height:10px;margin-bottom:.9rem}
+.section-head p{color:var(--muted)}
+
+/* ============ BOTÕES ============ */
+.btn{display:flex;align-items:center;justify-content:center;width:100%;min-height:54px;padding:.85rem 1.25rem;
+  font-family:var(--display);font-weight:700;font-size:1.05rem;line-height:1.2;text-align:center;
+  border-radius:12px;border:2px solid transparent;text-decoration:none;cursor:pointer;
+  transition:transform .12s,background-color .15s}
+.btn:active{transform:scale(.98)}
+.btn-pink{background:var(--pink);color:var(--ink);box-shadow:4px 4px 0 rgba(255,255,255,.9)}
+.btn-outline-light{border-color:rgba(255,255,255,.7);color:#fff}
+.btn-dark{background:var(--ink);color:#fff}
+.btn-outline-dark{border-color:var(--ink);color:var(--ink);background:transparent}
+.btn-stack{display:flex;flex-direction:column;gap:.85rem}
+
+/* ============ FOTOS (só imagem, jeito de foto colada no caderno) ============ */
+.photo{position:relative;margin:0;width:100%;aspect-ratio:var(--ratio,4/3)}
+.photo.r-portrait{--ratio:4/5}
+.photo.r-wide{--ratio:4/3}
+.photo.r-square{--ratio:1/1}
+.photo img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 25%;border-radius:4px;
+  background:var(--lav-2);border:6px solid #fff;box-shadow:0 3px 10px rgba(29,15,56,.18)}
+.photo-wrap{padding:10px}
+.photo-wrap.tilt-l img{transform:rotate(-1.6deg)}
+.photo-wrap.tilt-r img{transform:rotate(1.4deg)}
+.tape{position:absolute;top:-10px;left:50%;transform:translateX(-50%) rotate(-2deg);width:64px;height:22px;
+  background:var(--tape);opacity:.85;box-shadow:0 1px 2px rgba(0,0,0,.15);z-index:2}
+
+/* ============ CABEÇALHO E MENU ============ */
+.site-header{position:sticky;top:0;z-index:50;height:var(--header-h);background:var(--ink);color:#fff;
+  border-bottom:3px solid var(--pink);padding-top:env(safe-area-inset-top)}
+.bar{height:var(--header-h);display:flex;align-items:center;justify-content:space-between;background:transparent}
+.brand{font-family:var(--display);font-weight:800;font-size:1.1rem;text-decoration:none;color:#fff;letter-spacing:-.01em}
+.menu-btn{display:flex;align-items:center;gap:.55rem;min-height:44px;padding:0 .25rem 0 .75rem;background:none;border:0;color:#fff;
+  font-family:var(--display);font-weight:800;font-size:1.05rem;cursor:pointer}
+.menu-btn .lines{display:flex;flex-direction:column;gap:5px}
+.menu-btn .lines i{display:block;width:22px;height:2px;background:#fff;border-radius:2px}
+.menu{display:none;position:absolute;top:100%;left:0;right:0;background:var(--violet-deep);
+  border-bottom:1px solid rgba(255,255,255,.14);box-shadow:0 12px 24px rgba(0,0,0,.25)}
+.menu.open{display:block}
+.menu a{display:flex;align-items:center;min-height:52px;padding:0 1.25rem;font-family:var(--display);font-weight:500;font-size:1.1rem;
+  text-decoration:none;color:#fff;border-top:1px solid rgba(255,255,255,.1)}
+.menu a:active{background:rgba(255,255,255,.1)}
+
+/* ============ BANNER DO TOPO ============ */
+.banner-topo{position:relative;background:var(--violet-deep)}
+.banner-img{display:block;width:100%;aspect-ratio:16/7;object-fit:cover;background:var(--lav-2)}
+.banner-topo::after{content:'';position:absolute;left:0;right:0;bottom:-1px;height:22px;background:var(--violet-deep);
+  clip-path:polygon(0% 100%,3% 30%,7% 100%,11% 20%,15% 100%,19% 35%,23% 100%,27% 15%,31% 100%,35% 30%,39% 100%,43% 20%,47% 100%,51% 35%,55% 100%,59% 15%,63% 100%,67% 30%,71% 100%,75% 20%,79% 100%,83% 35%,87% 100%,91% 15%,95% 100%,100% 25%,100% 100%)}
+.banner-title-row{position:relative;z-index:2;display:flex;align-items:flex-end;gap:1rem;padding:1.5rem 1.25rem 2.25rem}
+.banner-title{color:#fff;font-family:var(--hand);font-weight:700;font-size:clamp(2.4rem,11vw,3.2rem);line-height:1;
+  text-shadow:0 2px 0 rgba(0,0,0,.18)}
+.sticker-wrap{flex:0 0 auto;padding:0;align-self:flex-end}
+.sticker-frame{width:78px;--ratio:1/1;position:relative}
+.sticker-frame::before{content:'';position:absolute;top:-10px;left:50%;transform:translateX(-50%) rotate(-3deg);
+  width:56px;height:20px;background:var(--tape);opacity:.85;box-shadow:0 1px 2px rgba(0,0,0,.15);z-index:2}
+.sticker-frame img{border:none;box-shadow:none;background:transparent;border-radius:8px;
+  filter:drop-shadow(0 3px 6px rgba(0,0,0,.35))}
+
+/* ============ CAPA (PROPOSTA) ============ */
+.hero{color:#fff;overflow:hidden;padding:2rem 0 3.25rem;background-color:var(--violet-deep)}
+.hero .eyebrow{display:inline-block;font-family:var(--hand);font-size:1.3rem;color:#ffd166;margin-bottom:.25rem;transform:rotate(-2deg)}
+.hero h2.hero-title{font-size:clamp(2.1rem,10vw,3rem);font-weight:800;line-height:1.02;letter-spacing:-.02em;margin-bottom:1.25rem}
+.hero p{color:#e6dcf7;font-size:1.1rem;margin-bottom:1.75rem}
+.hero .btn-stack{margin-bottom:2.5rem}
+
+/* ============ TEXTO + FOTO ============ */
+.story h2{font-size:clamp(1.9rem,8.5vw,2.6rem);font-weight:800;margin-bottom:1rem}
+.story p+p{margin-top:1rem}
+.story .photo-wrap{margin-top:1.75rem}
+
+/* ============ AÇÕES ============ */
+.actions{display:flex;flex-direction:column;gap:2.25rem}
+.action h3{font-size:1.4rem;font-weight:700;margin:1rem 0 .4rem}
+.action p{color:var(--muted)}
+
+/* ============ DADOS ============ */
+.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.stat{background:#fff;border:2px solid var(--ink);border-radius:14px;padding:1.1rem 1rem;text-align:center;
+  box-shadow:4px 4px 0 var(--pink)}
+.stat:nth-child(odd){transform:rotate(-1deg)}
+.stat:nth-child(even){transform:rotate(1deg)}
+.stat-num{display:block;font-family:var(--display);font-weight:800;font-size:clamp(1.8rem,7vw,2.4rem);color:var(--violet);line-height:1}
+.stat-label{display:block;margin-top:.4rem;font-size:.92rem;color:var(--muted)}
+.stats-note{margin-top:1.25rem;font-size:.85rem;color:var(--muted)}
+
+/* ============ ABAS ============ */
+.segment{position:sticky;top:calc(var(--header-h) + env(safe-area-inset-top));z-index:5;display:grid;grid-template-columns:repeat(3,1fr);gap:4px;
+  background:var(--lav-2);border-radius:14px;padding:4px;margin-bottom:.75rem}
+.tab-btn{min-height:50px;border:0;border-radius:10px;background:transparent;font-family:var(--display);font-weight:700;font-size:1rem;
+  color:var(--muted);cursor:pointer;transition:background-color .15s,color .15s}
+.tab-btn.active{background:#fff;color:var(--ink);box-shadow:inset 0 -3px 0 var(--pink),0 1px 3px rgba(29,15,56,.18)}
+.tab-hint{font-family:var(--display);font-size:.9rem;color:var(--muted);margin-bottom:.75rem}
+.badge-em-breve{display:inline-block;font-family:var(--hand);font-size:1.15rem;color:var(--pink-dark);
+  background:var(--tape);padding:.3rem .9rem;border-radius:999px;transform:rotate(-1.5deg);margin-bottom:1.5rem}
+.tab-panel{display:none}
+.tab-panel.active{display:block}
+.profile h3{font-size:clamp(1.9rem,8.5vw,2.6rem);font-weight:800;margin:1.5rem 0 .35rem}
+.profile .field{font-family:var(--display);font-weight:500;color:var(--violet);margin-bottom:1rem;font-size:1.1rem}
+.contrib{margin-top:1.5rem;background:var(--lav);border-radius:10px;padding:1.15rem 1.25rem}
+.contrib h4{font-size:1.05rem;font-weight:700;margin-bottom:.4rem}
+
+/* ============ LINHA DO TEMPO ============ */
+.timeline{list-style:none;margin-left:.5rem;padding-left:1.5rem;border-left:3px dashed var(--line)}
+.timeline li{position:relative;padding-bottom:2rem}
+.timeline li:last-child{padding-bottom:0}
+.timeline li::before{content:'';position:absolute;left:calc(-1.5rem - 9px);top:.3rem;width:15px;height:15px;border-radius:50%;
+  background:var(--pink);border:3px solid var(--lav)}
+.year{display:block;font-family:var(--hand);font-weight:700;font-size:1.9rem;line-height:1.1;color:var(--violet);margin-bottom:.25rem}
+.timeline strong{background:linear-gradient(transparent 62%,rgba(247,37,133,.32) 62%)}
+
+/* ============ DESCUBRA SUA ENGENHARIA ============ */
+.finder h3{font-size:1.25rem;font-weight:700;margin-bottom:.35rem}
+.dica{font-family:var(--display);font-size:.95rem;color:var(--muted);margin-bottom:1.25rem}
+.grupo-titulo{font-family:var(--hand);font-size:1.35rem;font-weight:700;color:var(--violet);margin:1.75rem 0 .6rem}
+.grupo-titulo:first-child{margin-top:0}
+.chips{display:flex;flex-wrap:wrap;gap:.6rem}
+.chip{position:relative}
+.chip input{position:absolute;opacity:0;inset:0;width:100%;height:100%;cursor:pointer;margin:0}
+.chip span{display:flex;align-items:center;min-height:46px;font-family:var(--display);font-weight:500;font-size:1rem;line-height:1.2;
+  padding:.5rem 1rem;border-radius:999px;background:#fff;border:1.5px solid var(--line);transition:background-color .15s,color .15s,border-color .15s}
+.chip input:checked+span{background:var(--violet);border-color:var(--violet);color:#fff}
+.chip input:focus-visible+span{outline:3px solid var(--pink);outline-offset:2px}
+
+.more{margin-top:1.75rem}
+.more summary{list-style:none;display:flex;align-items:center;justify-content:space-between;min-height:52px;padding:0 1rem;
+  border:1.5px solid var(--line);border-radius:12px;background:#fff;font-family:var(--display);font-weight:700;font-size:1rem;cursor:pointer}
+.more summary::-webkit-details-marker{display:none}
+.more summary::after{content:'+';font-size:1.5rem;font-weight:500;color:var(--violet)}
+.more[open] summary::after{content:'\2212'}
+.more summary span{font-weight:500;color:var(--muted)}
+.refs{max-width:640px;margin:0 auto;padding:0 1.25rem 1.5rem}
+.refs summary{list-style:none;display:inline-flex;align-items:center;gap:.4rem;min-height:40px;padding:0 .25rem;
+  border:0;background:none;font-family:var(--display);font-weight:500;font-size:.9rem;color:var(--muted);cursor:pointer}
+.refs summary::-webkit-details-marker{display:none}
+.refs summary::before{content:'▸';font-size:.8rem;transition:transform .15s}
+.refs[open] summary::before{transform:rotate(90deg)}
+.refs-list{margin-top:.5rem;padding-left:1.1rem;font-size:.85rem;color:var(--muted);line-height:1.7}
+.refs-list li{margin-bottom:.3rem}
+textarea{display:block;width:100%;margin-top:.75rem;font:inherit;font-size:1.05rem;padding:.9rem 1rem;border:1.5px solid var(--line);
+  border-radius:12px;background:#fff;color:var(--ink);resize:vertical;min-height:110px}
+textarea:focus{outline:3px solid var(--pink);outline-offset:2px;border-color:var(--violet)}
+
+.finder-bar{position:sticky;bottom:0;z-index:10;margin:1.75rem -1.25rem 0;padding:.75rem 1.25rem calc(.75rem + env(safe-area-inset-bottom));
+  background:rgba(255,255,255,.96);border-top:1px solid var(--line);box-shadow:0 -8px 20px rgba(29,15,56,.08)}
+.aviso{font-family:var(--display);color:var(--pink-dark);font-weight:500;font-size:.95rem;margin-bottom:.6rem}
+.aviso:empty{display:none}
+
+.results{margin-top:2.5rem;display:flex;flex-direction:column;gap:1.25rem;scroll-margin-top:calc(var(--header-h) + 12px)}
+.results:focus{outline:none}
+.result{padding:1.25rem 0;border-top:2px solid var(--ink)}
+.result.first{background:var(--violet-deep);color:#fff;border:0;border-radius:12px;padding:1.5rem 1.25rem}
+.result-head{display:flex;gap:1rem;align-items:flex-start;margin-bottom:.9rem}
+.rank{font-family:var(--hand);font-weight:700;font-size:3rem;line-height:.8;color:var(--pink)}
+.result h3{font-size:1.35rem;margin:0}
+.tag{display:block;font-family:var(--display);font-weight:500;font-size:.9rem;opacity:.8;margin-bottom:.15rem}
+.result.first .bar{background:rgba(255,255,255,.2)}
+.bar{height:6px;border-radius:3px;background:var(--lav-2);margin-bottom:1rem;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--pink);border-radius:3px}
+.why{font-size:.95rem;margin-top:.75rem;opacity:.9}
+.mulher-destaque{margin-top:1rem;padding:.9rem 1rem;border-radius:10px;background:rgba(255,255,255,.1)}
+.result:not(.first) .mulher-destaque{background:var(--lav)}
+.mulher-label{font-family:var(--display);font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;opacity:.75;margin-bottom:.2rem}
+.mulher-nome{font-family:var(--hand);font-size:1.35rem;font-weight:700;margin-bottom:.15rem}
+.mulher-bio{font-size:.92rem;opacity:.9}
+.results-note{font-size:.95rem;color:var(--muted)}
+.results-note a{color:var(--violet);font-weight:600}
+
+/* ============ GALERIA ============ */
+.gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;padding:8px}
+.gallery .g1{grid-column:span 2;--ratio:4/3}
+
+/* ============ CHAMADA FINAL ============ */
+.cta{background:var(--violet);color:#fff;padding:3.25rem 0}
+.cta h2{font-size:clamp(1.9rem,8.5vw,2.6rem);font-weight:800;margin-bottom:.75rem}
+.cta p{color:#eadff9;margin-bottom:1.75rem}
+
+footer{background:var(--ink);color:#d9cdee;padding:1.75rem 0 calc(1.75rem + env(safe-area-inset-bottom));font-family:var(--display);font-size:.95rem}
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- ============ BANNER DO TOPO (aceita GIF) ============ -->
+<section class="banner-topo">
+  <img class="banner-img" data-foto="banner" src="" alt="Banner do projeto (pode ser um GIF)">
+  <div class="banner-title-row">
+    <h1 class="banner-title">Mulheres que Movem<br>o Futuro</h1>
+    <div class="photo-wrap sticker-wrap"><figure class="photo r-square sticker-frame"><img data-foto="sticker" src="" alt="Selo ou figura do projeto (PNG transparente)"></figure></div>
+  </div>
+</section>
+
+<!-- ============ CABEÇALHO ============ -->
+<header class="site-header" id="cabecalho">
+  <div class="container bar">
+    <a class="brand" href="#proposta">Mulheres na Engenharia</a>
+    <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="menu">
+      Menu <span class="lines" aria-hidden="true"><i></i><i></i><i></i></span>
+    </button>
+  </div>
+  <nav class="menu" id="menu" aria-label="Menu principal">
+    <a href="#proposta">Proposta</a>
+    <a href="#dados">Dados</a>
+    <a href="#mulheres">Pioneiras</a>
+    <a href="#linha-tempo">Linha do tempo</a>
+    <a href="#descubra">Descubra sua engenharia</a>
+    <a href="#galeria">Galeria</a>
+    <a href="#quiz">Quiz do projeto</a>
+  </nav>
+</header>
+
+<main>
+
+<!-- ============ 1. CAPA: PROPOSTA DE INTERVENÇÃO ============ -->
+<section id="proposta" class="hero">
+  <div class="container">
+    <span class="eyebrow">nosso projeto</span>
+    <h2 class="hero-title">Proposta de intervenção</h2>
+    <p>
+      [ESCREVA A SUA PROPOSTA AQUI]: Nosso objetivo é incentivar e expandir a presença feminina nas áreas STEM (Ciência, Tecnologia, Engenharia e Matemática), promovendo mentoria nas escolas, combate ao preconceito de gênero e garantindo equidade no mercado de trabalho.
+    </p>
+    <div class="btn-stack">
+      <a class="btn btn-pink" href="#" data-quiz target="_blank" rel="noopener">Responder o quiz do projeto</a>
+      <a class="btn btn-outline-light" href="#descubra">Descubra sua engenharia</a>
+    </div>
+    <div class="photo-wrap tilt-l"><figure class="photo r-portrait"><img data-foto="hero" src="" alt="Descreva a foto da capa"></figure></div>
+  </div>
+</section>
+
+<!-- ============ 2. TEXTO + FOTO: O PROBLEMA ============ -->
+<section id="contexto" class="block">
+  <div class="container story">
+    <h2>Por que esse tema importa</h2>
+    <p>[Escreva aqui o problema que o projeto quer resolver: por que ainda há poucas mulheres na engenharia?]</p>
+    <p>[Adicione dados, exemplos ou uma história real para dar contexto ao leitor.]</p>
+    <div class="photo-wrap"><figure class="photo r-wide"><img data-foto="contexto" src="" alt="Descreva a foto desta seção"></figure></div>
+  </div>
+</section>
+
+<!-- ============ 3. DADOS ============ -->
+<section id="dados" class="block alt">
+  <div class="container">
+    <div class="section-head">
+      <h2>Os números da desigualdade</h2>
+      <p>[Se quiser, adicione a fonte dos dados abaixo, como CONFEA ou INEP.]</p>
+    </div>
+    <div class="stats-grid">
+      <div class="stat"><span class="stat-num">[24%]</span><span class="stat-label">[das engenheiras registradas no Brasil são mulheres]</span></div>
+      <div class="stat"><span class="stat-num">[1945]</span><span class="stat-label">[ano da 1ª formatura de uma mulher negra em engenharia no Brasil]</span></div>
+      <div class="stat"><span class="stat-num">[+15pp]</span><span class="stat-label">[de crescimento da presença feminina desde o ano 2000]</span></div>
+      <div class="stat"><span class="stat-num">[1 em 4]</span><span class="stat-label">[estudantes de engenharia no Brasil é mulher]</span></div>
+    </div>
+    <p class="stats-note">[Confira e atualize esses números com uma fonte oficial antes de publicar.]</p>
+  </div>
+</section>
+
+<!-- ============ 4. AS AÇÕES DA PROPOSTA ============ -->
+<section id="acao" class="block">
+  <div class="container">
+    <div class="section-head">
+      <h2>Como vamos agir</h2>
+      <p>[Resuma em uma ou duas frases o plano da sua proposta.]</p>
+    </div>
+    <div class="actions">
+      <article class="action">
+        <div class="photo-wrap tilt-l"><figure class="photo r-wide"><img data-foto="acao1" src="" alt="Mentoria nas escolas"></figure></div>
+        <h3>Mentoria nas escolas</h3>
+        <p>[Descreva esta ação em duas ou três linhas.]</p>
+      </article>
+      <article class="action">
+        <div class="photo-wrap tilt-r"><figure class="photo r-wide"><img data-foto="acao2" src="" alt="Combate ao preconceito de gênero"></figure></div>
+        <h3>Combate ao preconceito de gênero</h3>
+        <p>[Descreva esta ação em duas ou três linhas.]</p>
+      </article>
+      <article class="action">
+        <div class="photo-wrap tilt-l"><figure class="photo r-wide"><img data-foto="acao3" src="" alt="Equidade no mercado de trabalho"></figure></div>
+        <h3>Equidade no mercado de trabalho</h3>
+        <p>[Descreva esta ação em duas ou três linhas.]</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5. PIONEIRAS EM ABAS ============ -->
+<section id="mulheres" class="block alt">
+  <div class="container">
+    <div class="section-head">
+      <h2>Grandes nomes da engenharia</h2>
+      <p>Três mulheres que abriram caminho.</p>
+    </div>
+    <span class="badge-em-breve">+ em breve, mais mulheres aqui</span>
+
+    <div class="tabs" id="tabs">
+      <div class="segment" role="tablist" aria-label="Pioneiras da engenharia">
+        <button class="tab-btn active" type="button" role="tab" aria-selected="true"  aria-controls="mulher1" data-tab="mulher1">Ada</button>
+        <button class="tab-btn"        type="button" role="tab" aria-selected="false" aria-controls="mulher2" data-tab="mulher2">Hedy</button>
+        <button class="tab-btn"        type="button" role="tab" aria-selected="false" aria-controls="mulher3" data-tab="mulher3">Enedina</button>
+      </div>
+      <p class="tab-hint">Toque em um nome ou deslize para o lado.</p>
+
+      <div id="mulher1" class="tab-panel active" role="tabpanel">
+        <div class="profile">
+          <div class="photo-wrap tilt-l"><figure class="photo r-portrait"><img data-foto="ada" src="" alt="Retrato de Ada Lovelace"></figure></div>
+          <h3>Ada Lovelace</h3>
+          <p class="field">Engenharia de Software e Matemática</p>
+          <p>Ada Lovelace é reconhecida mundialmente como a primeira programadora da história. Ela escreveu o primeiro algoritmo para ser processado por uma máquina (a Máquina Analítica de Charles Babbage).</p>
+          <div class="contrib">
+            <h4>Contribuição principal</h4>
+            <p>Criação do primeiro algoritmo para computadores e a visão de que máquinas poderiam ir além de meros cálculos numéricos.</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="mulher2" class="tab-panel" role="tabpanel">
+        <div class="profile">
+          <div class="photo-wrap tilt-r"><figure class="photo r-portrait"><img data-foto="hedy" src="" alt="Retrato de Hedy Lamarr"></figure></div>
+          <h3>Hedy Lamarr</h3>
+          <p class="field">Inventora e Engenheira de Telecomunicações</p>
+          <p>Além de ser uma famosa atriz de Hollywood, Hedy Lamarr foi uma inventora genial que patenteou um sistema de comunicações que serve de base para as tecnologias sem fio de hoje.</p>
+          <div class="contrib">
+            <h4>Contribuição principal</h4>
+            <p>Tecnologia de salto de frequência de rádio, que inspirou tecnologias sem fio como o Bluetooth e o Wi-Fi.</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="mulher3" class="tab-panel" role="tabpanel">
+        <div class="profile">
+          <div class="photo-wrap tilt-l"><figure class="photo r-portrait"><img data-foto="enedina" src="" alt="Retrato de Enedina Alves Marques"></figure></div>
+          <h3>Enedina Alves Marques</h3>
+          <p class="field">Engenharia Civil</p>
+          <p>Primeira mulher negra a se formar em engenharia no Brasil e a primeira mulher a se formar em engenharia no estado do Paraná (1945).</p>
+          <div class="contrib">
+            <h4>Contribuição principal</h4>
+            <p>Grandes obras de infraestrutura no Brasil, incluindo o plano de aproveitamento das águas dos rios Capivari, Cachoeira e Capivari-Mirim para a Usina Hidrelétrica Capivari-Cachoeira.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 6. LINHA DO TEMPO ============ -->
+<section id="linha-tempo" class="block">
+  <div class="container">
+    <div class="section-head">
+      <h2>Evolução da presença feminina na realidade</h2>
+    </div>
+    <ol class="timeline">
+      <li>
+        <span class="year">Século XIX</span>
+        <p>Mulheres eram impedidas de entrar na maioria das universidades de engenharia do mundo. As poucas que atuavam faziam de forma autodidata ou sob o nome de parentes masculinos.</p>
+      </li>
+      <li>
+        <span class="year">Ano 1945</span>
+        <p>Primeiras formações acadêmicas de mulheres negras e pioneiras no Brasil e América Latina. A participação feminina ainda não atingia 1% dos formandos em engenharia.</p>
+      </li>
+      <li>
+        <span class="year">Ano 2000</span>
+        <p>O percentual de mulheres graduadas em cursos de engenharia no Brasil chega próximo a 15%, impulsionado pelo maior acesso à universidade e programas de incentivo.</p>
+      </li>
+      <li>
+        <span class="year">Atualmente</span>
+        <p>Hoje em dia, as mulheres representam cerca de <strong>20% a 24%</strong> dos profissionais registrados nos conselhos de engenharia. O avanço ocorre principalmente por conta do combate a estereótipos desde a infância e políticas corporativas de diversidade.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ 7. DESCUBRA SUA ENGENHARIA ============ -->
+<section id="descubra" class="block alt">
+  <div class="container finder">
+    <div class="section-head">
+      <h2>Descubra sua engenharia</h2>
+      <p>Marque o que você gosta de fazer e veja quais engenharias combinam com você — com uma mulher que fez história em cada uma. É só uma sugestão para inspirar: existem muitos caminhos.</p>
+    </div>
+
+    <h3>O que você gosta de fazer?</h3>
+    <p class="dica">Marque quantas quiser.</p>
+    <div id="chips" role="group" aria-label="Interesses"></div>
+
+    <details class="more">
+      <summary>Quer contar mais? <span>(opcional)</span></summary>
+      <textarea id="texto" rows="3" maxlength="300" aria-label="Conte mais sobre o que você gosta" placeholder="Ex.: adoro cuidar do meu cachorro, fazer maquiagem e jogar vôlei"></textarea>
+    </details>
+
+    <div class="finder-bar">
+      <p class="aviso" id="aviso" role="alert"></p>
+      <button type="button" id="btn-descobrir" class="btn btn-dark">Ver minhas engenharias</button>
+    </div>
+
+    <div class="results" id="resultado" tabindex="-1" aria-live="polite" hidden></div>
+  </div>
+</section>
+
+<!-- ============ 8. GALERIA ============ -->
+<section id="galeria" class="block">
+  <div class="container">
+    <div class="section-head">
+      <h2>Galeria do projeto</h2>
+      <p>[Escreva uma legenda curta para as fotos: eventos, oficinas, entrevistas, bastidores do projeto.]</p>
+    </div>
+    <div class="gallery">
+      <figure class="photo r-square g1"><img data-foto="galeria1" src="" alt="Foto da galeria do projeto"></figure>
+      <figure class="photo r-square"><img data-foto="galeria2" src="" alt="Foto da galeria do projeto"></figure>
+      <figure class="photo r-square"><img data-foto="galeria3" src="" alt="Foto da galeria do projeto"></figure>
+      <figure class="photo r-square"><img data-foto="galeria4" src="" alt="Foto da galeria do projeto"></figure>
+      <figure class="photo r-square"><img data-foto="galeria5" src="" alt="Foto da galeria do projeto"></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 9. CHAMADA FINAL ============ -->
+<section class="cta" id="quiz">
+  <div class="container">
+    <h2>Agora é a sua vez de participar</h2>
+    <p>Responda o quiz do projeto e conte o que você pensa sobre o tema.</p>
+    <a class="btn btn-pink" href="#" data-quiz target="_blank" rel="noopener">Responder o quiz do projeto</a>
+  </div>
+</section>
+
+</main>
+
+<details class="refs">
+  <summary>Referências</summary>
+  <ul class="refs-list">
+    <li>[Nome da fonte 1 — link ou referência completa]</li>
+    <li>[Nome da fonte 2 — link ou referência completa]</li>
+    <li>[Nome da fonte 3 — link ou referência completa]</li>
+  </ul>
+</details>
+
+<footer>
+  <div class="container">
+    <p>Projeto: A Participação Feminina na Engenharia © 2026</p>
+  </div>
+</footer>
+
+</div><!-- /page -->
+
+<script>
+/* =========================================================
+   SCRIPT DO SITE (você não precisa mexer aqui)
+   ========================================================= */
+
+/* ---------- Link do quiz ---------- */
+document.querySelectorAll('[data-quiz]').forEach(a => { a.href = CONFIG.linkQuiz; });
+
+/* ---------- Placeholder genérico (só imagem, sem texto) ---------- */
+const PLACEHOLDER = "data:image/svg+xml;utf8," + encodeURIComponent(
+  '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400"><rect width="400" height="400" fill="#ebe2f7"/>' +
+  '<circle cx="200" cy="150" r="46" fill="#cbb9e8"/><rect x="90" y="230" width="220" height="110" rx="14" fill="#cbb9e8"/></svg>'
+);
+document.querySelectorAll('img[data-foto]').forEach(img => {
+  img.src = PLACEHOLDER;
+  const foto = CONFIG.fotos[img.dataset.foto];
+  if (!foto || !foto.src) return;
+  const teste = new Image();
+  teste.onload = () => { img.src = foto.src; if (foto.alt) img.alt = foto.alt; };
+  teste.src = foto.src;
+});
+
+/* ---------- Menu ---------- */
+const menuBtn = document.getElementById('menu-btn');
+const menu = document.getElementById('menu');
+function fecharMenu() {
+  menu.classList.remove('open');
+  menuBtn.setAttribute('aria-expanded', 'false');
+}
+menuBtn.addEventListener('click', () => {
+  const aberto = menu.classList.toggle('open');
+  menuBtn.setAttribute('aria-expanded', aberto);
+});
+menu.querySelectorAll('a').forEach(a => a.addEventListener('click', fecharMenu));
+document.addEventListener('click', e => {
+  if (!document.getElementById('cabecalho').contains(e.target)) fecharMenu();
+});
+document.addEventListener('keydown', e => { if (e.key === 'Escape') fecharMenu(); });
+
+/* ---------- Abas das pioneiras (toque ou deslize) ---------- */
+const abas = [...document.querySelectorAll('.tab-btn')];
+abas.forEach(btn => btn.addEventListener('click', () => {
+  abas.forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected', 'false'); });
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  btn.setAttribute('aria-selected', 'true');
+  document.getElementById(btn.dataset.tab).classList.add('active');
+}));
+
+const areaAbas = document.getElementById('tabs');
+let x0 = null, y0 = null;
+areaAbas.addEventListener('touchstart', e => {
+  const t = e.touches[0];
+  x0 = t.clientX; y0 = t.clientY;
+}, { passive: true });
+areaAbas.addEventListener('touchend', e => {
+  if (x0 === null) return;
+  const t = e.changedTouches[0];
+  const dx = t.clientX - x0, dy = t.clientY - y0;
+  x0 = null;
+  if (Math.abs(dx) < 60 || Math.abs(dx) < Math.abs(dy) * 1.5) return;
+  const atual = abas.findIndex(b => b.classList.contains('active'));
+  const prox = dx < 0 ? atual + 1 : atual - 1;
+  if (prox >= 0 && prox < abas.length) abas[prox].click();
+}, { passive: true });
+
+/* =========================================================
+   DESCUBRA SUA ENGENHARIA
+   ========================================================= */
+const GRUPOS = [
+  { id: 'dia',     titulo: 'No seu dia a dia' },
+  { id: 'ciencia', titulo: 'Ciência, tecnologia e construção' }
+];
+
+const INTERESSES = [
+  { id:'animais',    grupo:'dia', label:'Cuidar de animais', short:'animais',
+    kw:['animais','animal','pet','cachorro','gato','veterinario','bicho','cavalo'] },
+  { id:'moda',       grupo:'dia', label:'Moda, roupas e estilo', short:'moda',
+    kw:['moda','roupa','roupas','tecido','costura','estilo','look'] },
+  { id:'beleza',     grupo:'dia', label:'Maquiagem, skincare e cabelo', short:'maquiagem e cosméticos',
+    kw:['maquiagem','skincare','cosmetico','cosmeticos','perfume','cabelo','beleza','unha'] },
+  { id:'cuidar',     grupo:'dia', label:'Cuidar de pessoas, crianças ou idosos', short:'cuidar de pessoas',
+    kw:['crianca','criancas','idoso','idosos','enfermagem','terapia','bebe','cuidador'] },
+  { id:'ajudar',     grupo:'dia', label:'Ajudar as pessoas e melhorar a comunidade', short:'ajudar a comunidade',
+    kw:['ajudar','voluntario','voluntaria','comunidade','social','solidario','ong'] },
+  { id:'midia',      grupo:'dia', label:'Fotografia, vídeos e redes sociais', short:'fotos, vídeos e redes sociais',
+    kw:['foto','fotografia','video','videos','tiktok','instagram','youtube','influencer','conteudo','edicao'] },
+  { id:'games',      grupo:'dia', label:'Jogar videogame', short:'videogames',
+    kw:['videogame','game','games','gamer','console','jogar'] },
+  { id:'musica',     grupo:'dia', label:'Música, cantar e tocar instrumentos', short:'música',
+    kw:['musica','cantar','violao','piano','instrumento','banda'], ex:['dj','som'] },
+  { id:'esportes',   grupo:'dia', label:'Esportes, dança e atividade física', short:'esportes e dança',
+    kw:['esporte','esportes','futebol','volei','corrida','academia','treino','danca','natacao','basquete','handebol'] },
+  { id:'plantas',    grupo:'dia', label:'Plantas, jardinagem e horta', short:'plantas e jardinagem',
+    kw:['plantas','planta','jardim','jardinagem','horta','agricultura','fazenda'], ex:['flor','flores'] },
+  { id:'decoracao',  grupo:'dia', label:'Decorar e organizar ambientes', short:'decoração',
+    kw:['decorar','decoracao','interiores','moveis','quarto'] },
+  { id:'artesanato', grupo:'dia', label:'Artesanato e trabalhos manuais', short:'artesanato',
+    kw:['artesanato','croche','trico','artesanal','pintura','bordado'], ex:['manual','manuais'] },
+  { id:'lideranca',  grupo:'dia', label:'Liderar grupos e falar em público', short:'liderança',
+    kw:['lideranca','liderar','apresentar','apresentacao','palestra','debate','discurso','oratoria','comunicativa'] },
+
+  { id:'programar',  grupo:'ciencia', label:'Programar e criar aplicativos ou jogos', short:'programação',
+    kw:['programa','codigo','app','aplicativo','jogo','site','python','computador'] },
+  { id:'logica',     grupo:'ciencia', label:'Resolver desafios de lógica e matemática', short:'lógica e matemática',
+    kw:['logica','enigma','xadrez','desafio','matematica','quebra-cabeca'] },
+  { id:'construcao', grupo:'ciencia', label:'Projetar prédios, pontes e cidades', short:'construções e cidades',
+    kw:['predio','ponte','casa','obra','construir','arquitetura','cidade','maquete'] },
+  { id:'eletronica', grupo:'ciencia', label:'Mexer com eletrônica e circuitos', short:'eletrônica',
+    kw:['eletronica','circuito','arduino','celular','eletronico'] },
+  { id:'energia',    grupo:'ciencia', label:'Energia solar, eólica e elétrica', short:'energia',
+    kw:['energia','solar','eolica','eletricidade','bateria','usina'] },
+  { id:'maquinas',   grupo:'ciencia', label:'Entender como máquinas e motores funcionam', short:'máquinas e motores',
+    kw:['maquina','motor','carro','moto','mecanica'] },
+  { id:'robos',      grupo:'ciencia', label:'Robôs, drones e automação', short:'robôs e automação',
+    kw:['robo','drone','automacao','robotica'] },
+  { id:'aviao',      grupo:'ciencia', label:'Aviões, foguetes e espaço', short:'aviões e espaço',
+    kw:['aviao','foguete','espaco','nasa','astronomia','planeta','satelite'] },
+  { id:'quimica',    grupo:'ciencia', label:'Química, experimentos e materiais', short:'química e experimentos',
+    kw:['quimica','experimento','laboratorio','material','reacao'] },
+  { id:'ambiente',   grupo:'ciencia', label:'Cuidar do meio ambiente e da água', short:'meio ambiente',
+    kw:['ambiente','natureza','sustentavel','agua','reciclagem','clima','floresta'] },
+  { id:'saude',      grupo:'ciencia', label:'Tecnologia para a saúde e o corpo humano', short:'saúde',
+    kw:['saude','medicina','corpo','protese','hospital','biologia'] },
+  { id:'alimentos',  grupo:'ciencia', label:'Alimentos, cozinha e nutrição', short:'alimentos',
+    kw:['comida','cozinha','alimento','nutricao','receita','bolo'] },
+  { id:'dados',      grupo:'ciencia', label:'Números, dados e gráficos', short:'dados e números',
+    kw:['dados','grafico','estatistica','numeros','planilha'] },
+  { id:'gestao',     grupo:'ciencia', label:'Organizar equipes e melhorar processos', short:'organização de equipes',
+    kw:['lider','equipe','organizar','gestao','empresa','negocio','projeto'] },
+  { id:'design',     grupo:'ciencia', label:'Desenhar, criar e inventar coisas novas', short:'criação e design',
+    kw:['desenhar','desenho','design','criar','inventar'], ex:['arte','artes'] },
+  { id:'mar',        grupo:'ciencia', label:'Mar, rios e navios', short:'mar e navios',
+    kw:['oceano','navio','barco','praia'], ex:['mar','rio'] },
+  { id:'redes',      grupo:'ciencia', label:'Internet, redes e comunicação sem fio', short:'internet e comunicação',
+    kw:['internet','rede','wifi','comunicacao','telefone','sinal'] }
+];
+
+const ENGENHARIAS = [
+  { nome:'Engenharia de Computação e Software',
+    desc:'Cria programas, aplicativos, sites, jogos e sistemas de inteligência artificial. Envolve muita lógica: quebrar um problema grande em passos pequenos que o computador consiga seguir.',
+    w:{programar:3,logica:3,dados:2,redes:1,design:1,robos:1,games:3,midia:2,musica:1},
+    mulher:{nome:'Grace Hopper', bio:'Matemática e programadora americana; criou o primeiro compilador, base das linguagens de programação modernas.'} },
+  { nome:'Engenharia Civil',
+    desc:'Projeta e constrói prédios, pontes, estradas, barragens e cidades. Une cálculo estrutural com um olhar prático para o dia a dia das pessoas que vão usar aquele espaço.',
+    w:{construcao:3,design:1,gestao:1,ambiente:1,logica:1,decoracao:2,ajudar:1,lideranca:1},
+    mulher:{nome:'Emily Warren Roebling', bio:'Assumiu a liderança técnica da construção da Ponte do Brooklyn, em Nova York, e a concluiu.'} },
+  { nome:'Engenharia Elétrica',
+    desc:'Cuida da geração, da distribuição e do uso da energia elétrica, de usinas solares a redes que abastecem casas e indústrias inteiras.',
+    w:{energia:3,eletronica:2,redes:1,robos:1,maquinas:1},
+    mulher:{nome:'Edith Clarke', bio:'Primeira mulher a se formar em engenharia elétrica pelo MIT e a trabalhar profissionalmente na área nos Estados Unidos.'} },
+  { nome:'Engenharia Eletrônica e de Telecomunicações',
+    desc:'Trabalha com circuitos, celulares, antenas e redes que fazem a informação viajar sem fio, do 5G às chamadas de vídeo.',
+    w:{redes:3,eletronica:3,programar:1,logica:1,midia:2,musica:2,games:1},
+    mulher:{nome:'Shirley Ann Jackson', bio:'Física cujas pesquisas em telecomunicações abriram caminho para tecnologias como o identificador de chamadas e a fibra óptica.'} },
+  { nome:'Engenharia Mecânica',
+    desc:'Projeta máquinas, motores, veículos e equipamentos, e faz tudo isso funcionar com eficiência, do carro que anda até o equipamento de academia.',
+    w:{maquinas:3,design:2,aviao:1,energia:1,robos:1,logica:1,esportes:1},
+    mulher:{nome:'Kate Gleason', bio:'Primeira mulher a se tornar membro da sociedade americana de engenheiros mecânicos (ASME).'} },
+  { nome:'Engenharia Mecatrônica e de Automação',
+    desc:'Junta mecânica, eletrônica e programação para criar robôs e sistemas automáticos, das linhas de fábrica aos robôs assistivos.',
+    w:{robos:3,eletronica:2,programar:2,maquinas:2,games:1},
+    mulher:{nome:'Ayanna Howard', bio:'Engenheira de robótica que desenvolve robôs de assistência e inteligência artificial voltados à saúde e à educação.'} },
+  { nome:'Engenharia Química',
+    desc:'Transforma matérias-primas em produtos do dia a dia, como combustíveis, remédios, plásticos e cosméticos.',
+    w:{quimica:3,alimentos:1,ambiente:1,saude:1,energia:1,beleza:3,artesanato:1,cuidar:1},
+    mulher:{nome:'Stephanie Kwolek', bio:'Química que inventou o Kevlar, material super-resistente usado em coletes à prova de bala e capacetes.'} },
+  { nome:'Engenharia Ambiental',
+    desc:'Cria soluções para tratar água e esgoto, reduzir a poluição e cuidar dos recursos naturais das cidades e do campo.',
+    w:{ambiente:3,quimica:1,construcao:1,energia:1,dados:1,animais:2,plantas:1,ajudar:2},
+    mulher:{nome:'Ellen Swallow Richards', bio:'Pioneira da engenharia sanitária e ambiental nos Estados Unidos e primeira mulher admitida no MIT.'} },
+  { nome:'Engenharia Biomédica',
+    desc:'Desenvolve equipamentos e tecnologias para diagnóstico e tratamento, como próteses, aparelhos hospitalares e dispositivos de reabilitação.',
+    w:{saude:3,eletronica:2,quimica:1,robos:1,dados:1,programar:1,cuidar:3,esportes:2,ajudar:2,animais:1},
+    mulher:{nome:'Patricia Bath', bio:'Oftalmologista e inventora de um dispositivo a laser para cirurgia de catarata, usado até hoje.'} },
+  { nome:'Engenharia Aeroespacial',
+    desc:'Projeta aviões, foguetes e satélites, calculando cada detalhe para que algo tão pesado consiga voar com segurança.',
+    w:{aviao:3,maquinas:1,logica:1,design:1,robos:1,dados:1},
+    mulher:{nome:'Mary Jackson', bio:'Primeira engenheira negra da NASA, trabalhou em pesquisas de aerodinâmica para o programa espacial americano.'} },
+  { nome:'Engenharia de Produção',
+    desc:'Deixa empresas e fábricas mais organizadas, eficientes e seguras, cuidando de pessoas, processos e recursos ao mesmo tempo.',
+    w:{gestao:3,dados:2,logica:1,design:1,lideranca:3,ajudar:1,decoracao:1,moda:1},
+    mulher:{nome:'Lillian Gilbreth', bio:'Uma das pioneiras da engenharia industrial, criou métodos de estudo de tempos e movimentos ainda usados hoje.'} },
+  { nome:'Engenharia de Alimentos',
+    desc:'Desenvolve e melhora a produção, a conservação e a segurança dos alimentos que chegam à mesa de milhões de pessoas todos os dias.',
+    w:{alimentos:3,quimica:2,saude:1,gestao:1,plantas:1,cuidar:1,ajudar:1} },
+  { nome:'Engenharia Naval e Oceânica',
+    desc:'Projeta navios, plataformas e estruturas que precisam resistir à força do mar e de rios durante anos.',
+    w:{mar:3,maquinas:1,construcao:1,design:1} },
+  { nome:'Engenharia de Materiais',
+    desc:'Estuda e cria materiais novos, como metais, cerâmicas, polímeros e compósitos, usados em todo tipo de produto, de roupas esportivas a implantes.',
+    w:{quimica:2,maquinas:1,design:1,saude:1,aviao:1,esportes:2,moda:1,artesanato:2,musica:1,decoracao:1,beleza:1} },
+  { nome:'Engenharia Têxtil',
+    desc:'Cria e melhora tecidos, fibras e roupas, da moda ao vestuário esportivo e aos tecidos usados na área da saúde.',
+    w:{moda:3,artesanato:2,design:1,esportes:1,quimica:1,decoracao:1} },
+  { nome:'Engenharia Agronômica',
+    desc:'Cuida da produção de alimentos, plantas e animais no campo, usando tecnologia para produzir mais e cuidar melhor da natureza.',
+    w:{plantas:3,animais:3,ambiente:1,alimentos:1,dados:1},
+    mulher:{nome:'Johanna Döbereiner', bio:'Agrônoma que revolucionou a agricultura brasileira com pesquisas sobre fixação biológica de nitrogênio no solo.'} },
+  { nome:'Engenharia Florestal',
+    desc:'Cuida de florestas e áreas naturais, da proteção da fauna e da flora ao uso sustentável da madeira.',
+    w:{ambiente:3,plantas:2,animais:2} },
+  { nome:'Engenharia de Bioprocessos e Biotecnologia',
+    desc:'Usa seres vivos, como bactérias e células, para criar medicamentos, vacinas, alimentos e produtos mais sustentáveis.',
+    w:{saude:2,quimica:2,beleza:1,animais:1,alimentos:1,ambiente:1,cuidar:1},
+    mulher:{nome:'Jennifer Doudna', bio:'Bioquímica premiada com o Nobel por co-desenvolver a técnica de edição genética CRISPR.'} }
+];
+
+/* --- monta os botões de interesses, por grupo --- */
+const chipsEl = document.getElementById('chips');
+GRUPOS.forEach(g => {
+  const titulo = document.createElement('h4');
+  titulo.className = 'grupo-titulo';
+  titulo.textContent = g.titulo;
+  const lista = document.createElement('div');
+  lista.className = 'chips';
+  INTERESSES.filter(it => it.grupo === g.id).forEach(it => {
+    const label = document.createElement('label');
+    label.className = 'chip';
+    const input = document.createElement('input');
+    input.type = 'checkbox';
+    input.value = it.id;
+    const span = document.createElement('span');
+    span.textContent = it.label;
+    label.append(input, span);
+    lista.appendChild(label);
+  });
+  chipsEl.append(titulo, lista);
+});
+
+const textoEl = document.getElementById('texto');
+const avisoEl = document.getElementById('aviso');
+const resultadoEl = document.getElementById('resultado');
+const btnDescobrir = document.getElementById('btn-descobrir');
+
+function marcados() {
+  return [...chipsEl.querySelectorAll('input:checked')].map(i => i.value);
+}
+function atualizarBotao() {
+  const n = marcados().length;
+  btnDescobrir.textContent = n === 0 ? 'Ver minhas engenharias' : 'Ver minhas engenharias (' + n + ')';
+  if (n > 0) avisoEl.textContent = '';
+}
+chipsEl.addEventListener('change', atualizarBotao);
+
+function normalizar(s) {
+  return s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+}
+function interessesDoTexto(texto) {
+  const palavras = normalizar(texto).split(/[^a-z0-9-]+/).filter(Boolean);
+  const achados = [];
+  INTERESSES.forEach(it => {
+    const porPrefixo = it.kw.some(k => palavras.some(p => p === k || (k.length > 3 && p.startsWith(k))));
+    const porPalavraInteira = (it.ex || []).some(k => palavras.includes(k));
+    if (porPrefixo || porPalavraInteira) achados.push(it.id);
+  });
+  return achados;
+}
+
+function recomendar(ids) {
+  return ENGENHARIAS.map(e => {
+    let score = 0;
+    const porque = [];
+    ids.forEach(id => {
+      const peso = e.w[id] || 0;
+      if (peso) { score += peso; porque.push({ id, peso }); }
+    });
+    porque.sort((a, b) => b.peso - a.peso);
+    return { e, score, porque };
+  })
+  .filter(r => r.score > 0)
+  .sort((a, b) => b.score - a.score || b.porque.length - a.porque.length)
+  .slice(0, 3);
+}
+
+function nomeCurto(id) {
+  return INTERESSES.find(i => i.id === id).short;
+}
+
+function mostrar(top, extras) {
+  const max = top[0].score;
+  let html = top.map((r, i) => {
+    const motivos = r.porque.slice(0, 3).map(p => nomeCurto(p.id)).join(', ');
+    const mulherHtml = r.e.mulher ? (
+      '<div class="mulher-destaque">' +
+        '<p class="mulher-label">Você combina com</p>' +
+        '<p class="mulher-nome">' + r.e.mulher.nome + '</p>' +
+        '<p class="mulher-bio">' + r.e.mulher.bio + '</p>' +
+      '</div>'
+    ) : '';
+    return '<article class="result' + (i === 0 ? ' first' : '') + '">' +
+      '<div class="result-head"><span class="rank">' + (i + 1) + '</span>' +
+      '<div><span class="tag">' + (i === 0 ? 'Melhor combinação' : 'Também combina') + '</span>' +
+      '<h3>' + r.e.nome + '</h3></div></div>' +
+      '<div class="bar" aria-hidden="true"><i style="width:' + Math.round(r.score / max * 100) + '%"></i></div>' +
+      '<p>' + r.e.desc + '</p>' +
+      '<p class="why">Combina com você por causa de: ' + motivos + '.</p>' +
+      mulherHtml +
+      '</article>';
+  }).join('');
+
+  if (extras.length) {
+    html += '<p class="results-note">Também entendi do seu texto: ' + extras.map(nomeCurto).join(', ') + '.</p>';
+  }
+  html += '<p class="results-note">Quer se inspirar? Conheça as <a href="#mulheres">mulheres que abriram caminho na engenharia</a>.</p>';
+  html += '<button type="button" class="btn btn-outline-dark" id="btn-refazer">Recomeçar</button>';
+  resultadoEl.innerHTML = html;
+  resultadoEl.hidden = false;
+}
+
+btnDescobrir.addEventListener('click', () => {
+  avisoEl.textContent = '';
+  const escolhidos = marcados();
+  const doTexto = interessesDoTexto(textoEl.value);
+  const extras = doTexto.filter(id => !escolhidos.includes(id));
+  const todos = [...escolhidos, ...extras];
+
+  if (todos.length === 0) {
+    avisoEl.textContent = 'Toque em pelo menos um interesse acima.';
+    return;
+  }
+  const top = recomendar(todos);
+  if (top.length === 0) {
+    avisoEl.textContent = 'Não encontrei uma combinação. Tente marcar mais interesses.';
+    return;
+  }
+  mostrar(top, extras);
+  resultadoEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  resultadoEl.focus({ preventScroll: true });
+});
+
+resultadoEl.addEventListener('click', e => {
+  if (e.target.id !== 'btn-refazer') return;
+  chipsEl.querySelectorAll('input').forEach(i => { i.checked = false; });
+  textoEl.value = '';
+  avisoEl.textContent = '';
+  atualizarBotao();
+  resultadoEl.innerHTML = '';
+  resultadoEl.hidden = true;
+  document.getElementById('descubra').scrollIntoView({ behavior: 'smooth', block: 'start' });
+});
+</script>
+</body>
+</html>
+
